@@ -11,12 +11,16 @@ class PostsController < ApplicationController
   	#DBへ保存する
   	post.save
   	#トップ画面へリダイレクト
-  	redirect_to '/top'
+  	redirect_to post_path(post.id) #詳細画面へリダイレクト
   end
 
   def index
   	@posts = Post.all
   end
+
+    def show
+      @post = Post.find(params[:id])
+    end
 
 	private
   	def post_params
